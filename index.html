@@ -320,7 +320,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    background-color: rgba(13, 17, 23, 0.8);
 }
 
 .projects-vertical {
@@ -329,7 +329,6 @@ header {
     position: relative;
     padding: 20px 0;
 }
-
 
 .project-vertical-card {
     display: flex;
@@ -383,6 +382,12 @@ header {
 .project-vertical-card:hover .project-vertical-content {
     transform: rotateY(10deg);
     box-shadow: 0 15px 30px rgba(0, 255, 65, 0.2);
+}
+
+/* GitHub icon color */
+.project-link i.fab.fa-github {
+    color: #00ff41;
+    font-size: 1.5rem; /* Adjust size if necessary */
 }
 
 /* Creative About Me Section */
@@ -688,9 +693,6 @@ header {
                     <a href="https://github.com/MokshagnaAnurag" target="_blank">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://discord.com/channels/@me" target="_blank">
-                        <i class="fa-brands fa-discord"></i>
-                    </a>
                 </div>
             </div>
         </section>
@@ -705,12 +707,13 @@ header {
                 <div class="about-me-details">
                     <h3>Mokshagna Anurag Kankati</h3>
                     <p>
-                        Hi, I am Mokshagna Anurag, an ambitious undergraduate driven by a passion for innovation at the crossroads of technology and security. My fascination lies in the transformative potential of Cybersecurity, IoT, and Embedded Systems, where I thrive on tackling complex challenges.
+                        Hello, I'm Mokshagna Anurag Kankati, an enthusiastic undergraduate student passionate about leveraging technology to solve real-world problems. With a deep interest in Cybersecurity, IoT, and Embedded Systems, I’m committed to developing innovative solutions that bridge the gap between security and connectivity.
                     </p>
                     <p>
-                        From designing with microcontrollers to keeping ahead of emerging threats to security, I'm here to create solutions that would help make the world connected and safer. I truly believe in collaboration—the fusion of minds to produce world-changing technologies that have a meaningful impact.
+                        My journey in technology has been fueled by a curiosity to understand and overcome challenges, from working with microcontrollers to staying ahead of the evolving landscape of cybersecurity threats. I firmly believe in the power of collaboration—uniting diverse minds to create cutting-edge solutions that have a lasting, positive impact on the world.
                     </p>
                 </div>
+                
                 
             </div>
         </section>
@@ -753,34 +756,70 @@ header {
                 <div class="projects-vertical">
                     <div class="project-vertical-card">
                         <div class="project-icon">
-                            <i class="fa-solid fa-shield"></i>
+                            <i class="fas fa-link"></i>
                         </div>
                         <div class="project-vertical-content">
-                            <h3>Phishing-Link-Scanner</h3>
-                            <p>Developed a Python-based Phishing Link Scanner that analyzes URLs for suspicious patterns and integrates VirusTotal API for enhanced threat detection, helping organizations safeguard against phishing attacks.</p>
-
+                            <h3 class="project-title">Phishing Link Scanner</h3>
+                            <p>Python-based tool that analyzes URLs for suspicious patterns and potential phishing threats, with optional VirusTotal integration for deeper analysis.</p>
+                            <a href="https://github.com/MokshagnaAnurag/Phishing-Link-Scanner" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
                         </div>
                     </div>
+                    
                     <div class="project-vertical-card">
                         <div class="project-icon">
-                            <i class="fas fa-brain"></i>
+                            <i class="fas fa-pen"></i>
                         </div>
                         <div class="project-vertical-content">
-                            <h3>ANPR System with OpenCV</h3>
-                            <p>Developed an Automatic Vehicle Number Plate Recognition (ANPR) system using OpenCV on a Raspberry Pi, enabling real-time license plate detection for applications in traffic management, law enforcement, and access control.</p>
+                            <h3 class="project-title">Handwritten Words Recognition</h3>
+                            <p>Implemented a Convolutional Neural Network (CNN) to detect and classify handwritten words. Features include dataset extraction, preprocessing, model training, and high-accuracy predictions for handwriting recognition.</p>
+                            <a href="https://github.com/MokshagnaAnurag/Handwritten-Words-Recognition" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                        
+                        <div class="project-vertical-card">
+                            <div class="project-icon">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <div class="project-vertical-content">
+                                <h3 class="project-title">ANPR System</h3>
+                                <p>Developed a cost-effective, real-time Automatic Vehicle Number Plate Recognition (ANPR) System using OpenCV and Tesseract OCR on Raspberry Pi for applications in traffic management, law enforcement, and access control.</p>
+                                <a href="https://github.com/MokshagnaAnurag/anpr.raspberrypi" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="project-vertical-card">
+                            <div class="project-icon">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <div class="project-vertical-content">
+                                <h3 class="project-title">Password Strength Checker</h3>
+                                <p>Python-based tool that evaluates the strength of passwords based on length, complexity, and uniqueness, offering actionable feedback to help users create secure passwords.</p>
+                                <a href="https://github.com/MokshagnaAnurag/PASSWORD-STRENGTH-CHECKER" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
                         </div>
                         
                         
                     </div>
                     <div class="project-vertical-card">
                         <div class="project-icon">
-                            <i class="fa-solid fa-coins"></i>
+                            <i class="fas fa-shield-alt"></i>
                         </div>
                         <div class="project-vertical-content">
-                            <h3>Financial-Tracker</h3>
-                            <p>Developed an intuitive financial tracking system using HTML, CSS, and JavaScript to manage and visualize user transactions in a seamless and interactive way.</p>
+                            <h3 class="project-title">SQL Injection Scanner</h3>
+                            <p>Python-based tool for identifying SQL injection vulnerabilities in web applications. It scans URL parameters and HTML forms, leveraging custom payloads to detect and report potential security risks.</p>
+                            <a href="https://github.com/MokshagnaAnurag/SQL-Injection-Scanner" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
                         </div>
                     </div>
+                    
                 </div>
             </section>
             <section class="experience" id="experience">
@@ -817,6 +856,11 @@ header {
                                 <strong>Shadowfox</strong>  
                                 <span>Cyber Security Intern | Sep 2024 – Oct 2024 | Remote</span><br>
                                 Executed reconnaissance, privilege escalation, and system hardening on vulnerable systems.
+                            </li>
+                            <li>
+                                <strong>Muta Engine</strong>  
+                                <span>.Net Intern | Nov 2024 – Present | Remote</span><br>
+                                Contributed to the development and optimization of .NET applications, focusing on debugging, performance improvements, and integration with third-party services.
                             </li>
                         </ul>
                     </div>
@@ -865,14 +909,20 @@ header {
     <script>
   function toggleVolunteering() {
     const volunteeringSection = document.querySelector('.volunteering');
-    const isVisible = volunteeringSection.style.display === 'block';
-    volunteeringSection.style.display = isVisible ? 'none' : 'block';
+    if (volunteeringSection.style.display === 'none' || volunteeringSection.style.display === '') {
+        volunteeringSection.style.display = 'block';
+    } else {
+        volunteeringSection.style.display = 'none';
+    }
 }
 
 function toggleInternships() {
     const internshipsSection = document.querySelector('.internships');
-    const isVisible = internshipsSection.style.display === 'block';
-    internshipsSection.style.display = isVisible ? 'none' : 'block';
+    if (internshipsSection.style.display === 'none' || internshipsSection.style.display === '') {
+        internshipsSection.style.display = 'block';
+    } else {
+        internshipsSection.style.display = 'none';
+    }
 }
     </script>
 <script>
