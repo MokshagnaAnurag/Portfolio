@@ -6,12 +6,13 @@
     <title>Cyber Guardian - Security Professional Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-     /* General Styles */
-
-     :root {
+/* General Styles */
+:root {
     --primary-color: #00ff41;
     --secondary-color: #0d1117;
     --text-color: #c9d1d9;
+    --hover-color: rgba(0, 255, 65, 0.8);
+    --shadow-color: rgba(0, 255, 65, 0.2);
 }
 
 * {
@@ -23,8 +24,8 @@
 body, html {
     height: 100%;
     font-family: 'Orbitron', sans-serif;
-    background-color: #0d1117;
-    color: #c9d1d9;
+    background: linear-gradient(135deg, rgba(13, 17, 23, 1) 0%, rgba(0, 0, 0, 1) 100%);
+    color: var(--text-color);
     overflow-x: hidden;
 }
 
@@ -77,7 +78,7 @@ header {
 
 .logo:hover {
     transform: scale(1.1);
-    color: rgba(0, 255, 65, 1);
+    color: var(--hover-color);
 }
 
 @keyframes fadeIn {
@@ -181,6 +182,7 @@ header {
         margin: 0 15px; /* Add space between links on desktop */
     }
 }
+
 .hero {
     display: flex;
     align-items: center;
@@ -203,6 +205,7 @@ header {
     font-size: 3rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .social-links {
@@ -227,7 +230,8 @@ header {
     padding: 3rem 2rem;
     border-radius: 10px;
     margin-top: 3rem;
-    border: 1px solid rgba(0, 255, 65, 0.2);
+    border: 1px solid var(--shadow-color);
+    box-shadow: 0 4px 15px rgba(0, 255, 65, 0.1);
 }
 
 .skills-section h2 {
@@ -260,8 +264,9 @@ header {
     padding: 1.5rem;
     border-radius: 10px;
     text-align: center;
-    border: 1px solid rgba( 0, 255, 65, 0.1);
+    border: 1px solid rgba(0, 255, 65, 0.1);
     transition: all 0.4s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .skill-card:hover {
@@ -321,27 +326,37 @@ header {
     flex-direction: column;
     align-items: center;
     background-color: rgba(13, 17, 23, 0.8);
+    padding: 40px 0; /* Added padding for better spacing */
 }
 
 .projects-vertical {
+    display: flex; /* Use Flexbox for layout */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: space-between; /* Space out the items */
+    gap: 30px; /* Space between cards */
     width: 100%;
-    max-width: 600px;
-    position: relative;
-    padding: 20px 0;
+    max-width: 1200px; /* Increased max-width for larger screens */
+    padding: 20px; /* Padding around the grid */
 }
 
 .project-vertical-card {
     display: flex;
-    align-items: center;
-    margin-bottom: 30px;
+    flex-direction: column; /* Stack icon and content vertically */
+    align-items: center; /* Center items */
     position: relative;
-    width: 100%;
     perspective: 1000px;
+    background-color: rgba(0, 255, 65, 0.05); /* Background color for the card */
+    border: 1px solid rgba(0, 255, 65, 0.2);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    overflow: hidden; /* Prevent overflow */
+    flex: 1 1 calc(30% - 20px); /* Allow cards to grow and shrink, with a base width */
+    max-width: 300px; /* Set a max width for each card */
 }
 
-.project-vertical-card:nth-child(even) {
-    flex-direction: row-reverse;
-    text-align: right;
+.project-vertical-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 15px 30px rgba(0, 255, 65, 0.2); /* Shadow effect on hover */
 }
 
 .project-icon {
@@ -352,7 +367,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 20px;
+    margin: 20px 0; /* Adjusted margin for vertical spacing */
     transition: all 0.5s ease;
     border: 2px solid rgba(0, 255, 65, 0.2);
     z-index: 2;
@@ -365,13 +380,9 @@ header {
 
 .project-vertical-content {
     flex: 1;
-    background-color: rgba(0, 255, 65, 0.05);
-    border: 1px solid rgba(0, 255, 65, 0.2);
     padding: 1.5rem;
-    border-radius: 10px;
-    transition: all 0.5s ease;
-    transform: rotateY(0deg);
-    backface-visibility: hidden;
+    text-align: center; /* Center text for better alignment */
+    transition: transform 0.5s ease;
 }
 
 .project-vertical-card:hover .project-icon {
@@ -380,15 +391,46 @@ header {
 }
 
 .project-vertical-card:hover .project-vertical-content {
-    transform: rotateY(10deg);
-    box-shadow: 0 15px 30px rgba(0, 255, 65, 0.2);
+    transform: translateY(-5px); /* Slight upward movement on hover */
 }
 
 /* GitHub icon color */
 .project-link i.fab.fa-github {
     color: #00ff41;
     font-size: 1.5rem; /* Adjust size if necessary */
+    margin-top: 10px; /* Space above the GitHub link */
 }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .projects-vertical {
+        flex-direction: column; /* Stack cards vertically on smaller screens */
+        align-items: center; /* Center items */
+    }
+
+    .project-vertical-card {
+        max-width: 90%; /* Allow cards to take more width on mobile */
+    }
+
+    .project-icon {
+        width: 60px; /* Smaller icon on mobile */
+        height: 60px;
+    }
+
+    .project-icon i {
+        font-size: 1.5rem; /* Smaller icon size */
+    }
+    .project-description {
+    display: none; /* Hide the description by default */
+    margin-top: 10px; /* Space above the description */
+    color: #ffffff; /* Text color for the description */
+}
+
+.project-description.visible {
+    display: block; /* Show the description when it has the 'visible' class */
+}
+}
+
 
 /* Creative About Me Section */
 .about-me-creative {
@@ -471,7 +513,8 @@ header {
     0% { top: 0%; }
     100% { top: 100%; }
 }
-    .experience {
+
+.experience {
     background-color: rgba(13, 17, 23, 0.9); /* Background for the entire section */
     padding: 3rem 2rem;
     border-radius: 10px;
@@ -561,6 +604,123 @@ header {
     color: white; /* Change list item text color to white */
     font-size: 1rem; /* Consistent font size for list items */
 }
+
+.achievements {
+    background-color: rgba(13, 17, 23, 0.9); /* Background for the entire section */
+    padding: 3rem 2rem;
+    border-radius: 10px;
+    margin-top: 3rem;
+    border: 1px solid rgba(0, 255, 65, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    font-family: 'Roboto', sans-serif; /* Use a clean font */
+    position: relative; /* For positioning pseudo-elements */
+    overflow: hidden; /* To hide overflow from animations */
+}
+
+.achievements h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: white; /* Change heading color to white */
+    font-size: 2.5rem;
+    position: relative;
+    font-weight: 700; /* Bold for emphasis */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for depth */
+}
+
+.achievements h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background-color: rgba(0, 255, 65, 0.8); /* Slightly darker for emphasis */
+    transition: width 0.3s ease; /* Smooth transition for width */
+}
+
+.achievements h2:hover::after {
+    width: 120px; /* Expand underline on hover */
+}
+
+.achievements-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Reduced gap for a tighter layout */
+}
+
+.toggle-button {
+    background-color: rgba(0, 255, 65, 0.1);
+    color: white; /* Change text color to white */
+    border: none;
+    padding: 12px 24px; /* Increased padding for a button */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem; /* Slightly larger font size */
+    margin-bottom: 1rem;
+    display: flex; /* Use flex to align icon and text */
+    align-items: center; /* Center align items vertically */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Added transform transition */
+    position: relative; /* For positioning pseudo-elements */
+}
+
+.toggle-button i {
+    margin-right: 8px; /* Space between icon and text */
+}
+
+.toggle-button:hover {
+    background-color: rgba(0, 255, 65, 0.2);
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.achievements-list {
+    background-color: rgba(0, 255, 65, 0.1); /* Light green background for sections */
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 255, 65, 0.1);
+    transition: all 0.4s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    display: none; /* Initially hidden */
+    opacity: 0; /* Start with opacity 0 for fade-in effect */
+    transform: translateY(20px); /* Start slightly below */
+    animation: fadeIn 0.5s forwards; /* Animation for fade-in */
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1; /* End with full opacity */
+        transform: translateY(0); /* Move to original position */
+    }
+}
+
+.achievements-list ul {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+}
+
+.achievements-list li {
+    margin-bottom: 10px; /* Space between list items */
+    color: white; /* Change list item text color to white */
+    font-size: 1rem; /* Consistent font size for list items */
+    display: flex; /* Use flex for icon and text alignment */
+    align-items: flex-start; /* Align items to the start */
+}
+
+.achievements-list li .achievement-icon {
+    font-size: 2rem; /* Adjust icon size */
+    margin-right: 10px; /* Space between icon and text */
+    display: inline-block; /* Ensure proper alignment */
+}
+
+.achievements-list li .achievement-description {
+    display: flex; /* Use flex for description alignment */
+    flex-direction: column; /* Stack title and description vertically */
+}
+
+.achievements-list li:hover {
+    transform: translateX(5px); /* Slightly move to the right on hover */
+}
+
 /* Contact Form Styles */
 .contact-section {
     background-color: rgba(13, 17, 23, 0.8);
@@ -760,8 +920,8 @@ header {
                         <i class="fas fa-link"></i>
                     </div>
                     <div class="project-vertical-content">
-                        <h3 class="project-title">Phishing Link Scanner</h3>
-                        <p>Python-based tool that analyzes URLs for suspicious patterns and potential phishing threats, with optional VirusTotal integration for deeper analysis.</p>
+                        <h3 class="project-title" onclick="toggleDescription(this)">Phishing Link Scanner</h3>
+                        <p class="project-description hidden">Python-based tool that analyzes URLs for suspicious patterns and potential phishing threats, with optional VirusTotal integration for deeper analysis.</p>
                         <a href="https://github.com/MokshagnaAnurag/Phishing-Link-Scanner" target="_blank" class="project-link">
                             <i class="fab fa-github"></i>
                         </a>
@@ -774,8 +934,8 @@ header {
                         <i class="fas fa-pen"></i>
                     </div>
                     <div class="project-vertical-content">
-                        <h3 class="project-title">Handwritten Words Recognition</h3>
-                        <p>Implemented a Convolutional Neural Network (CNN) to detect and classify handwritten words. Features include dataset extraction, preprocessing, model training, and high-accuracy predictions for handwriting recognition.</p>
+                        <h3 class="project-title" onclick="toggleDescription(this)">Handwritten Words Recognition</h3>
+                        <p class="project-description hidden">Implemented a Convolutional Neural Network (CNN) to detect and classify handwritten words. Features include dataset extraction, preprocessing, model training, and high-accuracy predictions for handwriting recognition.</p>
                         <a href="https://github.com/MokshagnaAnurag/Handwritten-Words-Recognition" target="_blank" class="project-link">
                             <i class="fab fa-github"></i>
                         </a>
@@ -788,8 +948,8 @@ header {
                         <i class="fas fa-car"></i>
                     </div>
                     <div class="project-vertical-content">
-                        <h3 class="project-title">ANPR System</h3>
-                        <p>Developed a cost-effective, real-time Automatic Vehicle Number Plate Recognition (ANPR) System using OpenCV and Tesseract OCR on Raspberry Pi for applications in traffic management, law enforcement, and access control.</p>
+                        <h3 class="project-title" onclick="toggleDescription(this)">ANPR System</h3>
+                        <p class="project-description hidden">Developed a cost-effective, real-time Automatic Vehicle Number Plate Recognition (ANPR) System using OpenCV and Tesseract OCR on Raspberry Pi for applications in traffic management, law enforcement, and access control.</p>
                         <a href="https://github.com/MokshagnaAnurag/anpr.raspberrypi" target="_blank" class="project-link">
                             <i class="fab fa-github"></i>
                         </a>
@@ -802,8 +962,8 @@ header {
                         <i class="fas fa-key"></i>
                     </div>
                     <div class="project-vertical-content">
-                        <h3 class="project-title">Password Strength Checker</h3>
-                        <p>Python-based tool that evaluates the strength of passwords based on length, complexity, and uniqueness, offering actionable feedback to help users create secure passwords.</p>
+                        <h3 class="project-title" onclick="toggleDescription(this)">Password Strength Checker</h3>
+                        <p class="project-description hidden">Python-based tool that evaluates the strength of passwords based on length, complexity, and uniqueness, offering actionable feedback to help users create secure passwords.</p>
                         <a href="https://github.com/MokshagnaAnurag/PASSWORD-STRENGTH-CHECKER" target="_blank" class="project-link">
                             <i class="fab fa-github"></i>
                         </a>
@@ -816,8 +976,8 @@ header {
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <div class="project-vertical-content">
-                        <h3 class="project-title">SQL Injection Scanner</h3>
-                        <p>Python-based tool for identifying SQL injection vulnerabilities in web applications. It scans URL parameters and HTML forms, leveraging custom payloads to detect and report potential security risks.</p>
+                        <h3 class="project-title" onclick="toggleDescription(this)">SQL Injection Scanner</h3>
+                        <p class="project-description hidden">Python-based tool for identifying SQL injection vulnerabilities in web applications. It scans URL parameters and HTML forms, leveraging custom payloads to detect and report potential security risks.</p>
                         <a href="https://github.com/MokshagnaAnurag/SQL-Injection-Scanner" target="_blank" class="project-link">
                             <i class="fab fa-github"></i>
                         </a>
@@ -865,6 +1025,61 @@ header {
                     </div>
                 </div>
             </section>
+            <section class="achievements" id="achievements">
+                <h2 class="section-title glitch-text" data-text="Achievements">🏆 Achievements</h2>
+                <div class="achievements-section">
+                    <button class="toggle-button" onclick="toggleAchievements()">
+                        <i class="fas fa-trophy"></i> <!-- Icon for Achievements -->
+                        <span> View Achievements</span>
+                    </button>
+                    <div class="achievements-list hidden">
+                        <ul class="list-none p-0">
+                            <li class="flex items-start mb-4">
+                                <span class="achievement-icon text-2xl mr-3"><i class="fas fa-medal"></i></span>
+                                <div class="achievement-description">
+                                    <strong class="text-white">Winner of Cyber Secured Champion Competition</strong>
+                                    <p class="text-gray-300">Conducted by Cyber Intelligence Global LLP, recognized for exceptional cybersecurity skills and innovative problem-solving.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start mb-4">
+                                <span class="achievement-icon text-2xl mr-3"><i class="fas fa-trophy"></i></span>
+                                <div class="achievement-description">
+                                    <strong class="text-white">Secured Second Position in AVISHKAR Season-2 Hackathon</strong>
+                                    <p class="text-gray-300">A National Level 48-Hour Hackathon, and won a cash prize of ₹1 Lakh.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start mb-4">
+                                <span class="achievement-icon text-2xl mr-3"><i class="fas fa-star"></i></span>
+                                <div class="achievement-description">
+                                    <strong class="text-white">Finalist in Serve Smart Hackathon</strong>
+                                    <p class="text-gray-300">Among the top 10 teams selected as finalists for the event conducted by IIT Banaras.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start mb-4">
+                                <span class="achievement-icon text-2xl mr-3"><i class="fas fa-graduation-cap"></i></span>
+                                <div class="achievement-description">
+                                    <strong class="text-white">Top 6 in Embedded Scholarship Exam</strong>
+                                    <p class="text-gray-300">Secured Top 6 position in the scholarship exam conducted by SENSE Academia.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start mb-4">
+                                <span class="achievement-icon text-2xl mr-3"><i class="fas fa-plane"></i></span> <!-- Airplane icon -->
+                                <div class="achievement-description">
+                                    <strong class="text-white">Participant in Andhra Pradesh Hackathon on Drones</strong>
+                                    <p class="text-gray-300">Proposed innovative solutions reviewed by judges, focusing on advanced drone technology applications.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start mb-4">
+                                <span class="achievement-icon text-2xl mr-3"><i class="fas fa-robot"></i></span> <!-- Robot icon -->
+                                <div class="achievement-description">
+                                    <strong class="text-white">Selected for Round-2 in NLP Challenge</strong>
+                                    <p class="text-gray-300">Conducted by IIT KGP.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
         <section class="section contact-section" id="contact">
             <h2>Contact Me</h2>
             <form name="submit-to-google-sheet" class="contact-form">
@@ -906,6 +1121,16 @@ header {
     </div>
     // script.js
     <script>
+        function toggleDescription(element) {
+    const description = element.nextElementSibling; // Get the next sibling (the description)
+    if (description.classList.contains('hidden')) {
+        description.classList.remove('hidden');
+        description.classList.add('visible');
+    } else {
+        description.classList.remove('visible');
+        description.classList.add('hidden');
+    }
+}
   function toggleVolunteering() {
     const volunteeringSection = document.querySelector('.volunteering');
     if (volunteeringSection.style.display === 'none' || volunteeringSection.style.display === '') {
@@ -921,6 +1146,14 @@ function toggleInternships() {
         internshipsSection.style.display = 'block';
     } else {
         internshipsSection.style.display = 'none';
+    }
+}
+function toggleAchievements() {
+    const achievementsList = document.querySelector('.achievements-list');
+    if (achievementsList.style.display === 'none' || achievementsList.style.display === '') {
+        achievementsList.style.display = 'block';
+    } else {
+        achievementsList.style.display = 'none';
     }
 }
     </script>
@@ -944,112 +1177,176 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
     <script>
-        const canvas = document.getElementById('network-background');
-        const ctx = canvas.getContext('2d');
-    
-        // Set canvas to full window size
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    
-        // Network configuration
-        const nodes = [];
-        const connections = [];
-        const nodeCount = 100;
-        const connectionDistance = 250;
-    
-        // Create nodes with dynamic characteristics
-        for (let i = 0; i < nodeCount; i++) {
-            nodes.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 2,
-                vy: (Math.random() - 0.5) * 2,
-                radius: Math.random() * 3 + 1
-            });
+const canvas = document.getElementById('network-background');
+const ctx = canvas.getContext('2d');
+
+// Set canvas to full window size
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// Network configuration
+const nodes = [];
+const connections = [];
+const nodeCount = 100; // Increased number of nodes
+const connectionDistance = 250; // Increased distance for more connections
+const maxConnectionsPerNode = 10; // Increased limit for the number of connections per node
+
+// Create nodes with dynamic characteristics
+for (let i = 0; i < nodeCount; i++) {
+    nodes.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 1, // Initial speed
+        vy: (Math.random() - 0.5) * 1,
+        radius: Math.random() * 3 + 1,
+        connections: [] // Store connections for each node
+    });
+}
+
+// Create connections between close nodes
+for (let i = 0; i < nodes.length; i++) {
+    for (let j = i + 1; j < nodes.length; j++) {
+        const dx = nodes[i].x - nodes[j].x;
+        const dy = nodes[i].y - nodes[j].y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance < connectionDistance && nodes[i].connections.length < maxConnectionsPerNode && nodes[j].connections.length < maxConnectionsPerNode) {
+            connections.push([nodes[i], nodes[j]]);
+            nodes[i].connections.push(nodes[j]); // Add connection to node
+            nodes[j].connections.push(nodes[i]); // Add connection to node
         }
+    }
+}
+
+function animate(mouseX, mouseY) {
+    // Slightly transparent background for trail effect
+    ctx.fillStyle = 'rgba(0,0,0,1)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     
-        // Create connections between close nodes
-        for (let i = 0; i < nodes.length; i++) {
-            for (let j = i + 1; j < nodes.length; j++) {
-                const dx = nodes[i].x - nodes[j].x;
-                const dy = nodes[i].y - nodes[j].y;
+    // Update node positions
+    nodes.forEach(node => {
+        // Mouse interaction
+        const dx = mouseX - node.x;
+        const dy = mouseY - node.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        // Repulsion from mouse
+        if (distance < 300) {
+            node.vx += dx * 0.05; // Apply force towards the cursor
+            node.vy += dy * 0.05; // Apply force towards the cursor
+        }
+
+        // Update position with reduced damping
+        node.vx *= 0.95; // Damping effect for slower movement
+        node.vy *= 0.95; // Damping effect for slower movement
+        node.x += node.vx;
+        node.y += node.vy;
+
+        // Bounce off edges
+        if (node.x <= 0 || node.x >= canvas.width) node.vx *= -1;
+        if (node.y <= 0 || node.y >= canvas.height) node.vy *= -1;
+    });
+
+    // Draw connections with bright green
+    ctx.strokeStyle = 'rgba(0, 255, 50, 0.4)'; // Bright neon green with reduced opacity
+    connections.forEach(([node1, node2]) => {
+        ctx.beginPath();
+        ctx.moveTo(node1.x, node1.y);
+        ctx.lineTo(node2.x, node2.y);
+        ctx.lineWidth = 1; // Slightly thicker lines
+        ctx.stroke();
+    });
+
+    // Draw nodes with bright color
+    nodes.forEach(node => {
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0, 255, 20, 0.8)'; // Bright neon green
+        ctx.fill();
+    });
+}
+
+// Function to check if a point is close to a line segment
+function isPointNearLine(px, py, x1, y1, x2, y2, threshold) {
+    const A = px - x1;
+    const B = py - y1;
+    const C = x2 - x1;
+    const D = y2 - y1;
+
+    const dot = A * C + B * D;
+    const len_sq = C * C + D * D;
+    const param = (len_sq !== 0) ? dot / len_sq : -1;
+
+    let xx, yy;
+
+    if (param < 0) {
+        xx = x1;
+        yy = y1;
+    } else if (param > 1) {
+        xx = x2;
+        yy = y2;
+    } else {
+        xx = x1 + param * C;
+        yy = y1 + param * D;
+    }
+
+    const dx = px - xx;
+    const dy = py - yy;
+    return (dx * dx + dy * dy) <= (threshold * threshold);
+}
+
+// Mouse click event to spread nodes
+canvas.addEventListener('click', (e) => {
+    if (e.button === 0) { // Check if the left mouse button is clicked
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+
+        connections.forEach(([node1, node2]) => {
+            if (isPointNearLine(mouseX, mouseY, node1.x, node1.y, node2.x, node2.y, 10)) {
+                // Apply force to spread nodes apart
+                const spreadForce = 30; // Adjust the spread force as needed
+                const dx = node2.x - node1.x;
+                const dy = node2.y - node1.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
-                
-                if (distance < connectionDistance) {
-                    connections.push([nodes[i], nodes[j]]);
+
+                // Normalize the direction and apply force
+                if (distance > 0) {
+                    const forceX = (dx / distance) * spreadForce;
+                    const forceY = (dy / distance) * spreadForce;
+
+                    node1.vx -= forceX; // Move node1 away
+                    node1.vy -= forceY;
+
+                    node2.vx += forceX; // Move node2 away
+                    node2.vy += forceY;
                 }
             }
-        }
-    
-        function animate(mouseX, mouseY) {
-            // Slightly transparent background for trail effect
-            ctx.fillStyle = 'rgba(0,0,0,1)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            // Update node positions
-            nodes.forEach(node => {
-                // Mouse interaction
-                const dx = mouseX - node.x;
-                const dy = mouseY - node.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                
-                // Repulsion from mouse
-                if (distance < 300) {
-                    node.x -= dx *  0.05;
-                    node.y -= dy * 0.05;
-                }
-
-                // Update position
-                node.x += node.vx;
-                node.y += node.vy;
-
-                // Bounce off edges
-                if (node.x <= 0 || node.x >= canvas.width) node.vx *= -1;
-                if (node.y <= 0 || node.y >= canvas.height) node.vy *= -1;
-            });
-
-            // Draw connections with bright green
-            ctx.strokeStyle = 'rgba(0, 255, 50, 0.6)'; // Bright neon green
-            connections.forEach(([node1, node2]) => {
-                ctx.beginPath();
-                ctx.moveTo(node1.x, node1.y);
-                ctx.lineTo(node2.x, node2.y);
-                ctx.lineWidth = 1; // Slightly thicker lines
-                ctx.stroke();
-            });
-
-            // Draw nodes with bright color
-            nodes.forEach(node => {
-                ctx.beginPath();
-                ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(0, 255, 20, 0.8)'; // Bright neon green
-                ctx.fill();
-            });
-        }
-
-        // Initial animation setup
-        let mouseX = canvas.width / 2;
-        let mouseY = canvas.height / 2;
-
-        function loop() {
-            animate(mouseX, mouseY);
-            requestAnimationFrame(loop);
-        }
-
-        // Mouse move event
-        window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
         });
+    }
+});
 
-        // Resize handling
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
+// Initial animation setup
+let mouseX = canvas.width / 2;
+let mouseY = canvas.height / 2;
 
-        // Start animation
-        loop();
+function loop() {
+    animate(mouseX, mouseY);
+    requestAnimationFrame(loop);
+}
+
+// Mouse move event
+window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY });
+
+// Resize handling
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+// Start animation
+loop();
     </script>
     
 </body>
