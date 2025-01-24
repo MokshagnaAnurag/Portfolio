@@ -322,114 +322,139 @@ header {
 }
 
 .projects-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: rgba(13, 17, 23, 0.8);
-    padding: 40px 0; /* Added padding for better spacing */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(13, 17, 23, 0.8);
+  padding: 40px 0; /* Added padding for better spacing */
 }
 
 .projects-vertical {
-    display: flex; /* Use Flexbox for layout */
-    flex-wrap: wrap; /* Allow items to wrap to the next line */
-    justify-content: space-between; /* Space out the items */
-    gap: 30px; /* Space between cards */
-    width: 100%;
-    max-width: 1200px; /* Increased max-width for larger screens */
-    padding: 20px; /* Padding around the grid */
+  display: flex; /* Use Flexbox for layout */
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  justify-content: space-between; /* Space out the items */
+  gap: 0; /* Remove gap to eliminate space between cards */
+  width: 100%;
+  max-width: 1200px; /* Increased max-width for larger screens */
+  padding: 20px; /* Padding around the grid */
 }
 
 .project-vertical-card {
-    display: flex;
-    flex-direction: column; /* Stack icon and content vertically */
-    align-items: center; /* Center items */
-    position: relative;
-    perspective: 1000px;
-    background-color: rgba(0, 255, 65, 0.05); /* Background color for the card */
-    border: 1px solid rgba(0, 255, 65, 0.2);
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
-    overflow: hidden; /* Prevent overflow */
-    flex: 1 1 calc(30% - 20px); /* Allow cards to grow and shrink, with a base width */
-    max-width: 300px; /* Set a max width for each card */
+  display: flex;
+  flex-direction: column; /* Stack icon and content vertically */
+  align-items: center; /* Center items */
+  position: relative;
+  perspective: 1000px;
+  background-color: rgba(0, 255, 65, 0.05); /* Background color for the card */
+  border: 1px solid rgba(0, 255, 65, 0.2);
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+  overflow: hidden; /* Prevent overflow */
+  flex: 1 1 calc(33.33% - 20px); /* Adjust to fit three cards per row */
+  max-width: calc(33.33% - 20px); /* Ensure max width aligns with flex basis */
+  margin: 0; /* Remove any default margin */
 }
 
 .project-vertical-card:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 15px 30px rgba(0, 255, 65, 0.2); /* Shadow effect on hover */
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 15px 30px rgba(0, 255, 65, 0.2); /* Shadow effect on hover */
 }
 
 .project-icon {
-    width: 80px;
-    height: 80px;
-    background-color: rgba(0, 255, 65, 0.1);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0; /* Adjusted margin for vertical spacing */
-    transition: all 0.5s ease;
-    border: 2px solid rgba(0, 255, 65, 0.2);
-    z-index: 2;
+  width: 80px;
+  height: 80px;
+  background-color: rgba(0, 255, 65, 0.1);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0; /* Adjusted margin for vertical spacing */
+  transition: all 0.5s ease;
+  border: 2px solid rgba(0, 255, 65, 0.2);
+  z-index: 2;
 }
 
 .project-icon i {
-    color: var(--primary-color);
-    font-size: 2rem;
+  color: var(--primary-color);
+  font-size: 2rem;
 }
 
 .project-vertical-content {
-    flex: 1;
-    padding: 1.5rem;
-    text-align: center; /* Center text for better alignment */
-    transition: transform 0.5s ease;
+  flex: 1;
+  padding: 1.5rem;
+  text-align: center; /* Center text for better alignment */
+  transition: transform 0.5s ease;
+}
+
+.project-title {
+  color: #ffffff; /* Pure white color */
+  font-weight: bold; /* Bold the title */
+  transition: color 0.3s ease, transform 0.3s ease; /* Transition for title */
+}
+
+.project-title:hover {
+  color: #00ff41; /* Change color on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
 .project-vertical-card:hover .project-icon {
-    transform: scale(1.1) rotate(360deg);
-    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+  transform: scale(1.1) rotate(360deg);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
 }
 
 .project-vertical-card:hover .project-vertical-content {
-    transform: translateY(-5px); /* Slight upward movement on hover */
+  transform: translateY(-5px); /* Slight upward movement on hover */
 }
 
 /* GitHub icon color */
 .project-link i.fab.fa-github {
-    color: #00ff41;
-    font-size: 1.5rem; /* Adjust size if necessary */
-    margin-top: 10px; /* Space above the GitHub link */
+  color: #00ff41;
+  font-size: 1.5rem; /* Adjust size if necessary */
+  margin-top: 10px; /* Space above the GitHub link */
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .projects-vertical {
-        flex-direction: column; /* Stack cards vertically on smaller screens */
-        align-items: center; /* Center items */
-    }
+  .projects-vertical {
+      flex-direction: column; /* Stack cards vertically on smaller screens */
+      align-items: center; /* Center items */
+  }
 
-    .project-vertical-card {
-        max-width: 90%; /* Allow cards to take more width on mobile */
-    }
+  .project-vertical-card {
+      max-width: 90%; /* Allow cards to take more width on mobile */
+  }
 
-    .project-icon {
-        width: 60px; /* Smaller icon on mobile */
-        height: 60px;
-    }
+  .project-icon {
+      width: 60px; /* Smaller icon on mobile */
+      height: 60px;
+  }
 
-    .project-icon i {
-        font-size: 1.5rem; /* Smaller icon size */
-    }
-    .project-description {
-    display: none; /* Hide the description by default */
-    margin-top: 10px; /* Space above the description */
-    color: #ffffff; /* Text color for the description */
+  .project-icon i {
+      font-size: 1.5rem; /* Smaller icon size */
+  }
 }
 
-.project-description.visible {
-    display: block; /* Show the description when it has the 'visible' class */
+/* Show project description by default */
+.project-description {
+  color: #ffffff; /* Pure white color */
+  font-weight: bold; /* Bold the description */
+  margin-top: 10px; /* Space above the description */
+  opacity: 1; /* Make description visible at all times */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Transition for opacity and transform */
 }
+
+/* Add a smooth transition when hovering over the card */
+.project-vertical-card:hover .project-description {
+  opacity: 1; /* Make sure description stays visible */
+  transform: scale(1.05); /* Slightly enlarge description */
 }
+
+/* Ensure no gaps between cards */
+.project-vertical-card {
+  margin: 0; /* Remove any default margin */
+}
+
+
 
 
 /* Creative About Me Section */
@@ -910,10 +935,10 @@ header {
                 
             </div>
         </section>
-
         <section class="section projects-section" id="projects">
             <h2 class="section-title glitch-text" data-text="Notable Projects">Notable Projects</h2>
             <div class="projects-vertical">
+                
                 <!-- Project 1: Phishing Link Scanner -->
                 <div class="project-vertical-card">
                     <div class="project-icon">
@@ -983,8 +1008,28 @@ header {
                         </a>
                     </div>
                 </div>
+        
+                <!-- Project 6: Cybercrime Reporting Chatbot -->
+                <div class="project-vertical-card">
+                    <div class="project-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="project-vertical-content">
+                        <h3 class="project-title" onclick="toggleDescription(this)">Cybercrime Reporting Chatbot</h3>
+                        <p class="project-description hidden">
+                            Developed an AI-powered chatbot designed to help users recognize and report various types of cybercrimes. The system uses advanced NLP models for intent recognition, sentiment analysis, and matching queries to predefined cybercrime cases. Built using Python and Gradio for a user-friendly interface.
+                        </p>
+                        <a href="https://github.com/MokshagnaAnurag/Cybercrime-Reporting-Chatbot.git" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
             </div>
         </section>
+        
+        
+
         
             <section class="experience" id="experience">
                 <h2 class="section-title glitch-text" data-text="Experience">Experience</h2>
